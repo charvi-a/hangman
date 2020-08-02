@@ -4,7 +4,6 @@ def Handler(event):
     hangman()
 
 
-
 def randomWord():
     li = []
     li1 = []
@@ -29,34 +28,26 @@ def randomWord():
     lblguesses.configure(text = "You have {} guesses left.".format(no_of_guesses))
     display = '?' * len(word_to_lower)
     lbldisplay.configure(text = display)
-    #print(word_to_guess)
+    
     
 def hangman():
-
-   
     global no_of_guesses,  word_to_guess,word_to_lower,display, incorrect_guesses,correct_guesses
-
     letter = inputletter.get()
-  
     entletter.delete(0,END)
-
-
+    
     if letter.isalpha() and len(letter) == 1:
         if letter in word_to_lower and letter not in correct_guesses:
-
             result.configure(text = "The letter guessed was correct.")
-
             correct_guesses.append(letter)
             displaylist = list(display)
             index = [i for i,letter1 in enumerate(word_to_lower) if letter==letter1]
+            
             for ind in index:
                 displaylist[ind] = letter
-            
+         
             display = "".join(displaylist)
             lbldisplay.configure(text = display)
 
-
-        
             if word_to_lower == display.lower():
                 guessed = True
                 result.configure(text = "You WON! CONGRATULATIONS! You have guessed the word")
@@ -69,7 +60,6 @@ def hangman():
                     window.destroy()
     
         
-        
         elif letter in correct_guesses or letter in incorrect_guesses:
             result.configure(text = "You have already guessed this letter before.")
         else:
@@ -80,7 +70,6 @@ def hangman():
             result.configure(text = "The letter guessed was incorrect.")
            
             if no_of_guesses == 0:
-                
                 result.configure(text = "Sorry, the correct word was {}".format(word_to_lower))
                 c1.configure(hanged(0))
                 res = messagebox.askyesno("Notification", "Do you want to play again?")
@@ -112,20 +101,7 @@ def hangman():
         result.configure(text = "Please enter a valid letter as a guess")
 
     c1.configure(hanged(no_of_guesses))
-'''        
-    else:
-        result.configure(text = "Sorry, the correct word was {}".format(word_to_lower))
-        #c1.itemconfigure(hanged(no_of_guesses))
-        res = messagebox.askyesno("Notification", "Do you want to play again?")
-        if res == True:
-            c1.delete("all")
-            randomWord()
-        else:
-            c1.delete("all")
-            window.destroy() 
-  
 
-'''
 import tkinter as tk
 from tkinter import *
 import pycountry
@@ -133,20 +109,14 @@ from tkinter import messagebox
 import random
 
 
-
 window = tk.Tk()
-
-
 f = tk.Frame(window)
 c1 = tk.Canvas(f)
 f.pack(side = "right")
-
 c1.pack()
-
 
 c1.create_line(300, 35, 300, 200)
 c1.create_line(200,35,300,35)
-
 
 window.configure(bg = 'pale turquoise')
 window.title("LET'S PLAY HANGMAN")
@@ -162,22 +132,18 @@ RULES:
         
 T.insert(tk.END, quote)
 
-
 window.bind("<Return>", Handler)
-
 
 inputletter = StringVar()
 entletter = Entry(window, bd = 6, justify = 'center', relief = 'groove', font= ("Helvetica" , 16), textvariable = inputletter)
 entletter.place(x = 500, y = 300)
 entletter.focus_set()
 
-
 lbl=Label(window, text="Enter a letter in lowercase and press enter ", fg='green',  font=("Helvetica", 16))
 lbl.place(x=50, y=300)
 
 result = Label(window, text = "" ,  bg = 'pale turquoise', font = ("Helvetica", 16))
 result.place(x = 100 , y = 500)
-
 
 lblword = Label(window, text = "The word is" , fg = 'green', font = ("Helvetica", 16))
 lblword.place(x = 50 , y = 350)
@@ -193,9 +159,8 @@ incorr.place(x = 50, y = 450)
 lblincorrect = Label(window, text = "[]", font =("Helvetica",15))
 lblincorrect.place(x = 500, y = 450)
     
-  
+ 
 def hanged(no_of_guesses):
-
     if no_of_guesses == 7:
         c1.create_line(200,35,200,70)
     if no_of_guesses == 6:
