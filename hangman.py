@@ -1,5 +1,3 @@
-import tkinter as tk
-from tkinter import *
 import pycountry
 import random
 
@@ -10,13 +8,10 @@ def hangman():
     won = False
     for i in range(len(pycountry.countries)):
         li1 = (list(pycountry.countries)[i].name).split()
-       
         if len(li1) == 1:
              li.append(list(pycountry.countries)[i].name)
-    
-    word_to_guess = random.choice(li)
 
-    print(word_to_guess)
+    word_to_guess = random.choice(li)
     word_to_lower = word_to_guess.lower()
     no_of_guesses = 8
     count = 0
@@ -24,6 +19,7 @@ def hangman():
     guessed = False
     correct_guesses = []
     incorrect_guesses = []
+    
     print("WELCOME TO HANGMAN")
     print("RULES: ")
     print("---> The user is required to guess the name of the country within 8 guesses.")
@@ -31,7 +27,6 @@ def hangman():
     print("---> If the letter guessed is incorrect that is, it does not exist in the word to be guessed, then the number of guesses decreases.")
     print("---> Otherwise, if the letter guessed is correct then the position of the correct letter in the word to be guessed is displayed.")
     print("---> Once the number of guesses are over, the game ends.")
-
     print("********************************************************************")
     print("The word is: "+ display)
 
