@@ -1,8 +1,6 @@
 
-
 def Handler(event):
     hangman()
-
 
 def randomWord():
     li = []
@@ -102,12 +100,12 @@ def hangman():
 
     c1.configure(hanged(no_of_guesses))
 
+    
 import tkinter as tk
 from tkinter import *
 import pycountry
 from tkinter import messagebox
 import random
-
 
 window = tk.Tk()
 f = tk.Frame(window)
