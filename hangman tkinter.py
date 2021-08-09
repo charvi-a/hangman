@@ -1,3 +1,6 @@
+import pycountry
+import random
+
 
 def Handler(event):
     hangman()
